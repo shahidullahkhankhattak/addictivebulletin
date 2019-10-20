@@ -229,6 +229,7 @@ const app = new Vue({
         }
     },
     mounted: function(){
+        console.log("mount function has run");
         this.lang = this.$route.params.lang;
         this.source = this.$route.params.source;
         this.category = this.$route.params.category;
