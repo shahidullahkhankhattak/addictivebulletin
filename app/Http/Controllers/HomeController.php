@@ -33,7 +33,7 @@ class HomeController extends Controller
         }
         $categories = Category::all();
         $source_ids =  isset($_SESSION['selected_sources_'.$lang]) ? $_SESSION['selected_sources_'.$lang] : null;
-        $news = News::getNews($request, $lang, $source, $category, $source_ids, $order, $search)->offset(0)->limit(20)->get();
+        $news = News::getNews($request, $lang, $source, $category, $source_ids, $order, $search)->offset(0)->limit(24)->get();
         foreach($news as $story){
             if($language == "english"){
                 $story['pub_date'] = human_date($story['pub_date']);
@@ -58,7 +58,7 @@ class HomeController extends Controller
         $language = $lang == "english" ? 'en' : 'ur';
         $sources = Source::where('lang', $lang)->get();
         $categories = Category::all();
-        $allnews = News::getNews($request, $lang, null, null, null, 'l')->offset(0)->limit(20)->get();
+        $allnews = News::getNews($request, $lang, null, null, null, 'l')->offset(0)->limit(24)->get();
         foreach($allnews as $story){
             if($lang == "english"){
                 $story['pub_date'] = human_date($story['pub_date']);
@@ -67,7 +67,7 @@ class HomeController extends Controller
             }
         }
         $story = News::getStory($newsid)->first();
-        $recommended = News::getRelatedNews($request, $lang, null, $story->category_slug)->orderByRaw("RAND()")->take(10)->get();
+        $recommended = News::getRelatedNews($request, $lang, null, $story->category_slug)->orderByRaw("RAND()")->take(24)->get();
         $story->related = $recommended;
         $page = \Request::route()->getName();
         $title = $story->title;

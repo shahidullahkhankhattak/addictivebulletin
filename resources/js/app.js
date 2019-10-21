@@ -158,7 +158,7 @@ const app = new Vue({
         },
         handleScroll: function(){
            var min =  $(".pusher").height() - $("body").height() - $("html").scrollTop();
-           if(min < 1200 && !this.loading && (this.stories.length % 20 == 0)){
+           if(min < 1200 && !this.loading && (this.stories.length % 24 == 0)){
                 this.directLoad = false;
                 this.loading = true;
                 if(this.$route.name == "home-en"){

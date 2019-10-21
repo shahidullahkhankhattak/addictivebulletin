@@ -21,7 +21,7 @@ class NewsApiController extends Controller
         }else{
             $order = "l"; // order l for latest
         }
-        $offset = ((int)$request->get('page') - 1) * 20;
+        $offset = ((int)$request->get('page') - 1) * 24;
         $search = null;
         if($request->get('search')){
             $search = $request->get('search');
@@ -34,7 +34,7 @@ class NewsApiController extends Controller
         if(!empty($source)){
             $source_ids = null;
         }
-        $news = News::getNews($request, $lang, $source, $category, $source_ids, $order, $search)->offset($offset)->limit(20)->get();
+        $news = News::getNews($request, $lang, $source, $category, $source_ids, $order, $search)->offset($offset)->limit(24)->get();
         foreach($news as $story){
             if($language == "english"){
                 $story['pub_date'] = human_date($story['pub_date']);
