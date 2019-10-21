@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notonastaliqurdudraft.css">
-    <link rel="stylesheet" href="/css/semantic.min.css">
-    <link rel="stylesheet" href="/css/app.css?v=102">
+    <link rel="stylesheet" href="/public/css/semantic.min.css">
+    <link rel="stylesheet" href="/public/css/app.css?v=102">
     <link rel="shortcut icon" href="/images/favicon.png" >
     <title>@if($page != 'News') Addictive Bulletin |@endif {{$page}} - {{$title}}</title>
     <?php if ($story): ?>
@@ -53,8 +53,8 @@
     <meta property="og:description" content="Your only single source of extensive collection of news, where you can search and explore all type of news." />
     <meta property="og:image" content="https://www.addictivebulletin.com/images/addictive_bulletin_logo.png" />
     <?php endif; ?>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/semantic.min.js"></script>
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/semantic.min.js"></script>
     <script type='text/javascript'>
         /* <![CDATA[ */
         var superpwa_sw = {"url":"\/superpwa-sw.js"};
@@ -67,7 +67,7 @@
         enable_page_level_ads: true
       });
     </script>
-    <script type='text/javascript' src='https://addictivebulletin.com/js/register-sw.js'></script>
+    <script type='text/javascript' src='/public/js/register-sw.js'></script>
     <?php if ($story): ?>
     <script type="application/ld+json">
         {
