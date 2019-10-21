@@ -1,5 +1,5 @@
 <div class="logoSidebar">
-        <img src="/images/addictive_bulletin_logo_new.png" alt="addictive bulletin logo">
+        <img src="/public/images/addictive_bulletin_logo_new.png" alt="addictive bulletin logo">
 </div>
 
 <a class="no-show" title="Latest" href="/{{$lang == 'en' ? 'english' : 'urdu'}}/"></a>

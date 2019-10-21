@@ -1,6 +1,6 @@
 <div class="ui left vertical sidebar inverted menu main-sidebar overlay">
     <div class="logoSidebar">
-        <img src="/images/addictive_bulletin_logo_new.png" alt="addictive bulletin logo">
+        <img src="/public/images/addictive_bulletin_logo_new.png" alt="addictive bulletin logo">
     </div>
     
     

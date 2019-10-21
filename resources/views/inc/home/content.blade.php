@@ -21,7 +21,7 @@
                         <router-link
                             to="/{{$lang == "en" ? 'english' : 'urdu' }}/news/{{$article->id}}/{{$article->slug ? $article->slug : ''}}">
                             <img onload="fadeIn(this)" alt="{{$article->title}}"
-                                src="/thumb.php?w=200&h=150&src={{$article->media}}" onerror="this.src = '/images/no_image.jpg'">
+                                src="/thumb.php?w=200&h=150&src={{$article->media}}" onerror="this.src = '/public/images/no_image.jpg'">
                         </router-link>
                     </div>
                     <div class="content">
@@ -58,7 +58,7 @@
                         <router-link
                             :to="'/'+lang+'/news/'+story.id+'/'+(story.slug ? story.slug : '')">
                             <img onload="fadeIn(this)"
-                                :src="'/thumb.php?w=200&h=150&src=' + story.media" onerror="this.src = '/images/no_image.jpg'">
+                                :src="'/thumb.php?w=200&h=150&src=' + story.media" onerror="this.src = '/public/images/no_image.jpg'">
                         </router-link>
                     </div>
                     <div class="content">

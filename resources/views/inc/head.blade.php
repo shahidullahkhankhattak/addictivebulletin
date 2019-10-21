@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notonastaliqurdudraft.css">
     <link rel="stylesheet" href="/public/css/semantic.min.css">
     <link rel="stylesheet" href="/public/css/app.css?v=102">
-    <link rel="shortcut icon" href="/images/favicon.png" >
+    <link rel="shortcut icon" href="/public/images/favicon.png" >
     <title>@if($page != 'News') Addictive Bulletin |@endif {{$page}} - {{$title}}</title>
     <?php if ($story): ?>
     <meta name="robots" content="index,follow">
@@ -51,7 +51,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Addictive Bulletin" />
     <meta property="og:description" content="Your only single source of extensive collection of news, where you can search and explore all type of news." />
-    <meta property="og:image" content="https://www.addictivebulletin.com/images/addictive_bulletin_logo.png" />
+    <meta property="og:image" content="https://www.addictivebulletin.com/public/images/addictive_bulletin_logo.png" />
     <?php endif; ?>
     <script src="/public/js/jquery.min.js"></script>
     <script src="/public/js/semantic.min.js"></script>
@@ -92,7 +92,7 @@
             "name": "Addictive Bulletin",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://www.addictivebulletin.com/images/addictive_bulletin_logo_new.png"
+              "url": "https://www.addictivebulletin.com/public/images/addictive_bulletin_logo_new.png"
             }
           },
           "description": "{{ $story->description }}"

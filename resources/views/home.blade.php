@@ -22,7 +22,7 @@
     </style>
     <div class="pre-loader">
         <div class="img">
-            <img src="/images/pre_loader.gif" alt="addictive bulletin loader">
+            <img src="/public/images/pre_loader.gif" alt="addictive bulletin loader">
         </div>
         <script>
             $(window).on('load', function(){
