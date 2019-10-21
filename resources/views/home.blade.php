@@ -31,6 +31,7 @@
         </script>
     </div>
     <div id="app">
+        <h1>This is my site</h1>
         @include('inc.sidebar.left')
         @include('inc.sidebar.right')
         @include('inc.topbar')
