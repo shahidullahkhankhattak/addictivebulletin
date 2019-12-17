@@ -1,2 +1,11 @@
 [21-Oct-2019 05:01:31 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
 [02-Nov-2019 19:32:24 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[25-Nov-2019 19:09:23 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[02-Dec-2019 16:17:26 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[03-Dec-2019 14:45:49 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[07-Dec-2019 19:20:41 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[07-Dec-2019 20:30:49 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[11-Dec-2019 11:04:50 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[11-Dec-2019 19:34:13 UTC] PHP Warning:  fopen(./cache/timthumb_ext_56648bfb887fef1bd89d5842be6cdb2e.timthumb.txt): failed to open stream: No such file or directory in /home/additwlr/public_html/thumb.php on line 1036
+[12-Dec-2019 03:17:15 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150
+[15-Dec-2019 07:44:31 UTC] PHP Notice:  getimagesize(): Read error! in /home/additwlr/public_html/thumb.php on line 1150

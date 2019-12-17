@@ -84,7 +84,7 @@
         </div>
         <div class="article slideDown" v-if="loading" :style="{'padding': '20px', 'margin-top': '-60px', 'margin-bottom': '0px'}">
                 <div class="loader">
-                        <img src="https://loading.io/spinners/coolors/lg.palette-rotating-ring-loader.gif" alt="">
+                        <img src="/public/images/loader.gif" alt="">
                 </div>
         </div>
     </div>
