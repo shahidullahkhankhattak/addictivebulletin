@@ -78,7 +78,7 @@ new Vue({
       searchkeywords: "",
       sources: window.sources,
       selected_sources: [],
-      stories: window.stories | [],
+      stories: window.stories || [],
       min_scroll: 0
     };
   },
