@@ -18,7 +18,7 @@ export function showNewsArticle() {
   $("body").addClass("no-scroll");
 }
 
-export function initJQueryFns () {
+export function initJQueryFns() {
   $("body").on("click", ".launch-left.icon.item", () => {
     $(".main-sidebar").toggleClass("visible");
     $(".pusher").addClass("dimmed");
@@ -40,7 +40,5 @@ export function initJQueryFns () {
     lastScrollTop = st;
   });
 
-  $('.ui.basic.modal').modal('show');
+  $(".ui.basic.modal").modal("show");
 }
-
-console.log("working")
