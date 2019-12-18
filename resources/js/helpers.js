@@ -19,6 +19,7 @@ export function showNewsArticle() {
 }
 
 export function initJQueryFns() {
+  console.log("jquery fns initiated");
   $("body").on("click", ".launch-left.icon.item", () => {
     $(".main-sidebar").toggleClass("visible");
     $(".pusher").addClass("dimmed");
