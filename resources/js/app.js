@@ -1,13 +1,10 @@
 require("./bootstrap");
 window.Vue = require("vue");
-import {ucwords, hideNewsArticle, showNewsArticle, initJQueryFns} from './helpers'
+import { ucwords, hideNewsArticle, showNewsArticle, initJQueryFns } from "./helpers";
 import VueRouter from "vue-router";
 
-initJQueryFns()
+initJQueryFns();
 Vue.use(VueRouter);
-
-console.log("app initialized")
-
 
 const routes = [
   { path: "/:lang", name: "home-en" },
