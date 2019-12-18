@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Seaweed+Script" rel="stylesheet">
     <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notonastaliqurdudraft.css">
     <link rel="stylesheet" href="/public/css/semantic.min.css">
-    <link rel="stylesheet" href="/public/css/app.css?v=102">
+    <link rel="stylesheet" href="/public{{mix('css/app.css')}}">
     <link rel="shortcut icon" href="/public/images/favicon.png" >
     <title>@if($page != 'News') Addictive Bulletin |@endif {{$page}} - {{$title}}</title>
     <?php if ($story): ?>
