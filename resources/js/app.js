@@ -6,6 +6,9 @@ import VueRouter from "vue-router";
 initJQueryFns()
 Vue.use(VueRouter);
 
+console.log("app initialized")
+
+
 const routes = [
   { path: "/:lang", name: "home-en" },
   { path: "/:lang/trending", name: "trending" },
