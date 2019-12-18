@@ -42,3 +42,5 @@ export function initJQueryFns () {
 
   $('.ui.basic.modal').modal('show');
 }
+
+console.log("working")
