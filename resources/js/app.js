@@ -3,8 +3,6 @@ window.Vue = require("vue");
 import { ucwords, hideNewsArticle, showNewsArticle, initJQueryFns } from "./helpers";
 import VueRouter from "vue-router";
 
-console.log("my console")
-
 initJQueryFns();
 Vue.use(VueRouter);
 
