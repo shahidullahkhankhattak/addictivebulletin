@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['session_api']], function () {
+Route::group(['middleware' => ['session_api', 'minify']], function () {
     Route::redirect('/', '/english');
     Route::get('/{lang}', 'HomeController@home')->name("Home");
     Route::get('/{lang}/sitemap.xml', 'SitemapsController@genSitemap')->name('Sitemaps');
