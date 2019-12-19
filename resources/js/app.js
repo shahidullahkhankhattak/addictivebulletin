@@ -1,6 +1,9 @@
 require("./bootstrap");
 window.Vue = require("vue");
-import { ucwords, hideNewsArticle, showNewsArticle, initJQueryFns } from "./helpers";
+import { initJQueryFns } from "./helpers";
+import {$route} from './watchers'
+import {MountLifecycle} from './lifecycle'
+import {isLiked, search, likeNews, getNews, add_remove_source, handleScroll, closeNews, openNews, getStory} from './methods'
 import VueRouter from "vue-router";
 
 initJQueryFns();
@@ -27,7 +30,7 @@ new Vue({
     return {
       last_route: "/urdu",
       page: 1,
-      story: window.story ? window.story : null,
+      story: window.story || null,
       lang: "urdu",
       loading: false,
       directLoad: 1,
@@ -43,206 +46,19 @@ new Vue({
     };
   },
   watch: {
-    $route: function(to, from) {
-      $(".story_media img").hide();
-      if (from.name != "news" && to.name != "news") {
-        this.directLoad = false;
-        this.loading = true;
-        this.last_route = { name: this.$route.name, query: this.$route.query };
-        this.page = 0;
-        this.stories = [];
-        this.source = this.category = null;
-      }
-      if (from.name == "news" && to.name != "news") {
-        $(".bottom.sidebar").addClass("visible");
-        hideNewsArticle();
-      }
-      if (this.$route.name == "home-en" && from.name != "news") {
-        document.title = "Addictive Bulletin | Home";
-        this.getNews("h");
-      } else if (this.$route.name == "category") {
-        this.category = this.$route.params.category;
-        document.title = "Addictive Bulletin | Category - " + ucwords(this.$route.params.category);
-        this.getNews("c");
-      } else if (this.$route.name == "source") {
-        this.source = this.$route.params.source;
-        document.title = "Addictive Bulletin | Source - " + ucwords(this.source);
-        this.getNews("s");
-      } else if (this.$route.name == "source-category") {
-        this.source = this.$route.params.source;
-        this.category = this.$route.params.category;
-        document.title =
-          "Addictive Bulletin | Source | Category - " +
-          ucwords(this.source) +
-          " - " +
-          this.category;
-        this.getNews("sc");
-      } else if (this.$route.name == "trending") {
-        document.title = "Addictive Bulletin | Trending - Trending news on top";
-        this.getNews("tr");
-      } else if (this.$route.name == "news") {
-        $(".bottom.sidebar").removeClass("visible");
-        this.id = this.$route.params.id;
-        this.getStory();
-      }
-    }
+    $route
   },
-  mounted: function() {
-    this.lang = this.$route.params.lang;
-    this.source = this.$route.params.source;
-    this.category = this.$route.params.category;
-    this.directLoad = false;
-    this.id = this.$route.params.id;
-    if (this.$route.name != "news") {
-      this.last_route = { name: this.$route.name, query: this.$route.query };
-    } else {
-      this.last_route = { path: "/" + this.lang, query: {} };
-      $(".bottom.sidebar").removeClass("visible");
-    }
-    if (this.$route.query.search && this.$route.query.search != "") {
-      this.searchkeywords = this.$route.query.search;
-    }
-    if (JSON.parse(localStorage.getItem("snews_sources_" + this.lang)) == null) {
-      localStorage.setItem(
-        "snews_sources_" + this.lang,
-        JSON.stringify(this.sources.map(s => s.id))
-      );
-    }
-    this.selected_sources = localStorage.getItem("snews_sources_" + this.lang)
-      ? JSON.parse(localStorage.getItem("snews_sources_" + this.lang))
-      : this.sources.map(s => s.id);
-    window.addEventListener("scroll", this.handleScroll);
-    let _this = this;
-    $("body").on("click", ".pusher.dimmed", () => {
-      if (
-        $(".icon-sidebar").hasClass("visible") &&
-        JSON.stringify(_this.selected_sources) !=
-          localStorage.getItem("snews_sources_" + _this.lang)
-      ) {
-        localStorage.setItem("snews_sources_" + _this.lang, JSON.stringify(_this.selected_sources));
-        axios.put("/api/select-sources/" + _this.lang, { ids: _this.selected_sources }).then(() => {
-          if (this.$route.name == "home-en") {
-            _this.directLoad = false;
-            _this.loading = true;
-            _this.last_route = { name: this.$route.name, query: this.$route.query };
-            _this.page = 0;
-            _this.stories = [];
-            _this.source = this.category = null;
-            _this.getNews("h");
-          }
-          _this.$router.push({
-            path: "/" + _this.lang,
-            query: { tid: Math.ceil(Math.random() * 9999999999) }
-          });
-        });
-      }
-      $(".pusher").removeClass("dimmed");
-      $(".main-sidebar").removeClass("visible");
-      $(".icon-sidebar").removeClass("visible");
-      $(".search-topbar").removeClass("visible");
-    });
-
-    $("body").on("click", ".launch-right.icon.item", () => {
-      _this.selected_sources_match = this.selected_sources;
-      $(".icon-sidebar").toggleClass("visible");
-      $(".pusher").addClass("dimmed");
-    });
-  },
+  mounted: MountLifecycle,
   methods: {
-    isLiked: function(newsid) {
-      return parseInt(this.stories.filter(s => s.id == newsid)[0].liked);
-    },
-    search: function() {
-      this.$router.push({
-        path: this.$route.path,
-        query: this.searchkeywords == "" ? "" : { search: this.searchkeywords }
-      });
-    },
-    likeNews: function(id) {
-      let story = this.stories.filter(s => s.id == id)[0];
-      if (story && story.liked == 0) {
-        story.liked = 1;
-        story.likes = parseInt(story.likes) + 1;
-      } else {
-        story.liked = 0;
-        story.likes = parseInt(story.likes) - 1;
-      }
-      axios.post("/api/like-news/" + id).then(() => {});
-    },
-    add_remove_source: function(id) {
-      if (this.selected_sources.indexOf(id) > -1) {
-        this.selected_sources.splice(this.selected_sources.indexOf(id), 1);
-      } else {
-        this.selected_sources.push(id);
-      }
-    },
-    handleScroll: function() {
-      let min = $(".pusher").height() - $("body").height() - $("html").scrollTop();
-      if (min < 1200 && !this.loading && this.stories.length % 24 == 0) {
-        this.directLoad = false;
-        this.loading = true;
-        if (this.$route.name == "home-en") {
-          this.getNews("h");
-        } else if (this.$route.name == "category") {
-          this.getNews("c");
-        } else if (this.$route.name == "source") {
-          this.getNews("s");
-        } else if (this.$route.name == "source-category") {
-          this.getNews("sc");
-        } else if (this.$route.name == "trending") {
-          this.getNews("tr");
-        }
-      }
-    },
-    closeNews: function() {
-      this.$router.push(this.last_route);
-    },
-    openNews: function() {
-      showNewsArticle();
-    },
-    getNews: function(type) {
-      this.page = this.page + 1;
-      let link = "/api/" + this.lang + "/";
-      if (type == "c") {
-        link += "category/" + this.category;
-      } else if (type == "s") {
-        link += "source/" + this.source;
-      } else if (type == "sc") {
-        link += "source/" + this.source + "/category/" + this.category;
-      } else if (type == "tr") {
-        link += "trending";
-      }
-      link += "?sources=" + JSON.stringify(this.selected_sources);
-      link += "&page=" + this.page;
-      link += "&search=" + (this.$route.query.search ? this.$route.query.search : "");
-      axios.get(link + "&tid=" + Date.now()).then(res => {
-        this.loading = false;
-        this.stories.push(...res.data.data);
-      });
-    },
-    getStory: function() {
-      let news_filter = this.stories.filter(s => s.id == this.$route.params.id);
-      if (news_filter.length > 0) {
-        this.story = news_filter[0];
-        if (!$(".news-article").hasClass("visible")) this.openNews();
-        let scr = document.querySelector("script[src='https://static.addtoany.com/menu/page.js']");
-        if (scr) document.body.removeChild(scr);
-        let script = document.createElement("script");
-        script.src = "https://static.addtoany.com/menu/page.js";
-        document.body.appendChild(script);
-      }
-      axios.get("/api/" + this.lang + "/get-story/" + this.id + "?tid=" + Date.now()).then(res => {
-        this.story = res.data;
-        if (news_filter.length == 0) {
-          if (!$(".news-article").hasClass("visible")) this.openNews();
-        }
-        let scr = document.querySelector("script[src='https://static.addtoany.com/menu/page.js']");
-        if (scr) document.body.removeChild(scr);
-        let script = document.createElement("script");
-        script.src = "https://static.addtoany.com/menu/page.js";
-        document.body.appendChild(script);
-      });
-    }
+    isLiked,
+    search,
+    likeNews,
+    getNews,
+    add_remove_source,
+    handleScroll,
+    closeNews,
+    openNews,
+    getStory
   }
 });
 
