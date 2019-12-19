@@ -2,14 +2,14 @@ import { showNewsArticle } from "./helpers";
 
 export function isLiked (newsid) {
   return parseInt(this.stories.filter(s => s.id == newsid)[0].liked);
-};
+}
 
 export function search () {
   this.$router.push({
     path: this.$route.path,
     query: this.searchkeywords == "" ? "" : { search: this.searchkeywords }
   });
-};
+}
 
 export function likeNews (id) {
   let story = this.stories.filter(s => s.id == id)[0];
@@ -21,7 +21,7 @@ export function likeNews (id) {
     story.likes = parseInt(story.likes) - 1;
   }
   axios.post("/api/like-news/" + id).then(() => {});
-};
+}
 
 export function add_remove_source (id) {
   if (this.selected_sources.indexOf(id) > -1) {
@@ -29,7 +29,7 @@ export function add_remove_source (id) {
   } else {
     this.selected_sources.push(id);
   }
-};
+}
 
 
 export function getNews (type) {
@@ -51,7 +51,7 @@ export function getNews (type) {
     this.loading = false;
     this.stories.push(...res.data.data);
   });
-};
+}
 
 export function handleScroll () {
   let min = $(".pusher").height() - $("body").height() - $("html").scrollTop();
@@ -70,15 +70,15 @@ export function handleScroll () {
       this.getNews("tr");
     }
   }
-};
+}
 
 export function closeNews () {
   this.$router.push(this.last_route);
-};
+}
 
 export function openNews () {
   showNewsArticle();
-};
+}
 
 export function getStory () {
   let news_filter = this.stories.filter(s => s.id == this.$route.params.id);
@@ -102,4 +102,4 @@ export function getStory () {
     script.src = "https://static.addtoany.com/menu/page.js";
     document.body.appendChild(script);
   });
-};
+}
