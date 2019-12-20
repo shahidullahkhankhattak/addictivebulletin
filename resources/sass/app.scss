@@ -652,3 +652,24 @@ a,
 button {
 	cursor: pointer
 }
+
+.ui.image.label.source-label{
+    position: absolute;
+    color: white;
+    box-shadow: 0px 0px 5px #666;
+    border-radius: 0px 0px 10px 0px;
+    border:1px solid #d6d6d6b6;
+    img {
+        background: white !important;
+        border-radius: 0px !important;
+    }
+}
+
+html[dir=rtl] .ui.image.label.source-label{
+    line-height: 6px;
+    border-radius: 0px 0px 0px 10px;
+    img{
+        margin-right: -12px;
+        margin-left: 5px;
+    }
+}
