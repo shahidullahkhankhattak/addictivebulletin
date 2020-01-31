@@ -5,7 +5,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'UA-106912900-3');
     </script>
     <meta charset="UTF-8">
@@ -163,4 +163,6 @@
             }
         }
     </style>
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0&appId=2029905333805170&autoLogAppEvents=1"></script>
 </head>
