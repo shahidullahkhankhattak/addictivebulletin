@@ -1,10 +1,11 @@
 require("./bootstrap");
 window.Vue = require("vue");
-import { initJQueryFns } from "./helpers";
-import {$route} from './watchers'
-import {MountLifecycle} from './lifecycle'
-import {isLiked, search, likeNews, getNews, add_remove_source, handleScroll, closeNews, openNews, getStory} from './methods'
 import VueRouter from "vue-router";
+import { initJQueryFns } from "./helpers";
+import { $route } from './watchers'
+import { MountLifecycle } from './lifecycle'
+import { isLiked, search, likeNews, getNews, add_remove_source, handleScroll, closeNews, openNews, getStory } from './methods'
+import VueAnalytics from 'vue-analytics';
 
 initJQueryFns();
 Vue.use(VueRouter);
@@ -21,6 +22,11 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   routes: routes
+});
+
+Vue.use(VueAnalytics, {
+  id: 'UA-106912900-3',
+  router
 });
 
 new Vue({
@@ -61,11 +67,3 @@ new Vue({
     getStory
   }
 });
-
-// ga('set', 'page', router.currentRoute.path);
-// ga('send', 'pageview');
-
-// router.afterEach(( to, from ) => {
-//   ga('set', 'page', to.path);
-//   ga('send', 'pageview');
-// });

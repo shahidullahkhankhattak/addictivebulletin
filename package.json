@@ -12,6 +12,7 @@
     "watch-poll": "npm run watch -- --watch-poll"
   },
   "dependencies": {
+    "vue-analytics": "^5.22.1",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2"
   },
