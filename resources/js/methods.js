@@ -103,3 +103,19 @@ export function getStory () {
     document.body.appendChild(script);
   });
 }
+
+export function trans(category) {
+  const translations = {
+    world: 'دنیا',
+    national: 'قومی',
+    sports: 'کھیل',
+    technology: 'ٹیکنالوجی',
+    business: 'کاروبار',
+    health: 'صحت',
+    others: 'باقی'
+  }
+  if(this.lang !== 'english')
+    return translations[category];
+
+  return category;
+}

@@ -58,7 +58,7 @@ navbar-laravel {
 	background-color: #1b1c1d;
 	width: 250px;
 	flex: 0 0 auto;
-	margin-top: 80px;
+	margin-top: 35px;
 	height: 100%
 }
 
@@ -532,6 +532,16 @@ html[dir=rtl] .search-topbar {
 	padding-right: 75px!important
 }
 
+.ui.fixed.main.menu.categories{
+    width: calc(100% - 250px);
+    left: 250px;
+    margin-top: 40px;
+    overflow-x: auto;
+}
+html[dir=rtl] .ui.fixed.main.menu.categories{
+    left:0;
+    right:250px;
+}
 html[dir=rtl] .search-topbar-inner .ui.icon.input>input {
 	text-align: right
 }
@@ -540,15 +550,34 @@ html[dir=rtl] .ui.icon.input>i.circular.icon {
 	left: .5em
 }
 
+.ui.inverted.menu .item, .ui.inverted.menu .item>a {
+    color:white;
+}
+
 i.icon.icon-close-search {
 	margin-right: 35px!important
 }
 
+.right.menu .icon.item,
+.launch-left.item i{
+    color:red;
+    font-weight:bold;
+    font-size:15px;
+}
 .ui.icon.input {
 	width: 90%!important;
 	max-width: 600px!important
 }
-
+.ui.inverted.green.menu .active.item{
+    background-color: rgba(0,0,0,0.3)!important;
+}
+.ui.inverted.red.item.lang,
+.ui.inverted.red.item.lang:active,
+.ui.inverted.red.item.lang:hover
+{
+    background: #db2728;
+    border-radius: 5px !important;
+}
 
 @media (max-width:1500px) {
 	.ui.link.auto.cards .card {
@@ -569,6 +598,11 @@ i.icon.icon-close-search {
 }
 
 @media (max-width:767px) {
+    .ui.fixed.main.menu.categories{
+        width: 100%;
+        left:0 !important;
+        right:0 !important;
+    }
 	.toc {
 		display: none
 	}

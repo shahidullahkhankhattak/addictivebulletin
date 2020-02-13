@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import { initJQueryFns } from "./helpers";
 import { $route } from './watchers'
 import { MountLifecycle } from './lifecycle'
-import { isLiked, search, likeNews, getNews, add_remove_source, handleScroll, closeNews, openNews, getStory } from './methods'
+import { isLiked, search, likeNews, getNews, add_remove_source, handleScroll, closeNews, openNews, getStory, trans } from './methods'
 import VueAnalytics from 'vue-analytics';
 
 initJQueryFns();
@@ -64,6 +64,7 @@ new Vue({
     handleScroll,
     closeNews,
     openNews,
-    getStory
+    getStory,
+    trans
   }
 });

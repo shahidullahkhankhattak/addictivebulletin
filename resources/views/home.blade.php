@@ -35,7 +35,6 @@
         @include('inc.sidebar.right')
         @include('inc.topbar')
         @include('inc.home.content')
-        @include('inc.sidebar.bottom')
     </div>
     @include('inc.scripts')
 </body>
