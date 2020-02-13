@@ -33,7 +33,7 @@
             </a>
         </div>
 </div>
-<div class="ui fixed inverted green main menu categories" style="@if($lang == 'ur') margin-top:43px; @else margin-top:40px; @endif overflow-x:auto;">
+<div class="ui fixed inverted green main menu categories" style="@if($lang == 'ur') margin-top:42px; @else margin-top:40px; @endif overflow-x:auto;">
     <a class="no-show" title="Latest" href="/{{$lang == 'en' ? 'english' : 'urdu'}}/"></a>
     <a class="no-show" title="World" href="/{{$lang == 'en' ? 'english' : 'urdu'}}/category/world"></a>
     <a class="no-show" title="National" href="/{{$lang == 'en' ? 'english' : 'urdu'}}/category/national"></a>
