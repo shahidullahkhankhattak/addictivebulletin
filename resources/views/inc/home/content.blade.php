@@ -18,7 +18,7 @@
                 @foreach($news as $article)
                 <article class="card">
                     <div class="image">
-                        <router-link to="/{{$lang == 'en' ? 'english' : 'urdu' }}/news/{{$article->id}}/{{$article->slug ? $article->slug : ''}}">
+                        <router-link to="/{{$lang == 'en' ? 'english' : 'urdu' }}/news/{{$article->id}}/{{$article->slug ? $article->slug : ''}}" title="{{$article->title}}">
                             <router-link to="/{{$lang == 'en' ? 'english' : 'urdu' }}/source/{{$article->source_slug}}" class="ui image label source-label" style="background-color: {{$article->color}} !important" title="{{$article->source}}">
                                 <img src="/public/images/source_logo/{{$article->source_slug}}.png" alt="{{$article->source}}">
                                 {{$article->source}}
@@ -56,17 +56,17 @@
                 <div class="no-news" v-else-if="lang == 'urdu' && stories.length == 0 && !loading">منتخب فلٹر میں کوی خبر نہی ملی.</div>
                 <article class="card" v-for="story in stories">
                     <div class="image">
-                        <router-link :to="'/'+lang+'/news/'+story.id+'/'+(story.slug ? story.slug : '')">
+                        <router-link :to="'/'+lang+'/news/'+story.id+'/'+(story.slug ? story.slug : '')" :title="story.title">
                             <router-link :to="`/${lang}/source/${story.source_slug}`" class="ui image label source-label" :style="{'background-color': `${story.color} !important`}" :title="story.source">
                                 <img :src="`/public/images/source_logo/${story.source_slug}.png`" :alt="story.source">
                                 @{{story.source}}
                             </router-link>
-                            <img onload="fadeIn(this)" :src="'/thumb.php?w=200&h=150&src=' + story.media" onerror="this.src = '/public/images/no_image.jpg'">
+                            <img onload="fadeIn(this)" :src="'/thumb.php?w=200&h=150&src=' + story.media" :alt="story.title" onerror="this.src = '/public/images/no_image.jpg'">
                         </router-link>
                     </div>
                     <div class="content">
                         <header class="header">
-                            <router-link :to="'/'+lang+'/news/'+story.id+'/'+(story.slug ? story.slug : '')">
+                            <router-link :to="'/'+lang+'/news/'+story.id+'/'+(story.slug ? story.slug : '')" :title="story.title">
                                 @{{story.title}}</router-link>
                         </header>
                         <div class="meta">
