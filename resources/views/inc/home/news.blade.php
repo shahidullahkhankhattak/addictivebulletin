@@ -28,7 +28,7 @@
                     </router-link>
             </div>
         </div>
-        <div class="article">
+        <article class="article">
             <div class="top_bar_wrapper">
                 <div class="top_bar">
                     <a class="icon btn_close" @click="closeNews()"><i class="close icon"></i></a>
@@ -47,9 +47,9 @@
                 <div class="story_media">
                     <img style="display:none;" @if($story) src="{{$story ? $story->media : ''}}" alt="{{$story->title}}" @endif :src="story.media" onload="fadeIn(this)">
                 </div>
-
-                <h1 class="story_title" v-html="story.title">{{$story ? $story->title : ''}}</h1>
-
+                <header>
+                    <h1 class="story_title" v-html="story.title">{{$story ? $story->title : ''}}</h1>
+                </header>
 
                 <div class="story_meta">
                     <span class="authors" v-html="story.author">{{$story ? $story->author : ''}}</span>
@@ -62,6 +62,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     </div>
 </div>
