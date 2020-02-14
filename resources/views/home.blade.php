@@ -25,7 +25,7 @@
             <img src="/public/images/pre_loader.gif" alt="addictive bulletin loader">
         </div>
         <script>
-            $(window).on('load', function(){
+            $(document).ready(function(){
                 $(".pre-loader").addClass("slideup");
             });
         </script>
