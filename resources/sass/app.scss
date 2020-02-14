@@ -11,6 +11,7 @@
 
 html, html body, body.pushable{
     background: white !important;
+    max-width:100% !important;
 }
 
 .header a,
@@ -156,6 +157,8 @@ html[dir=rtl] .ui.sidebar.menu .item {
     font-size:11px;
 }
 .ui.link.auto.cards .card .content .description{
+    word-break: break-all;
+    -ms-word-break: break-all;
     font-size:12px;
 }
 html[dir=rtl] .sidebar.left {
